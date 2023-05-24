@@ -6,42 +6,51 @@ Computación tolerante a fallas - Sección D06
 Profesor: *López Franco Michel Emanuel*
 Alumno: *Lomelí Flores Jesús Isaac*
 
-## Kubernetes
+## Cheeky Monkey
 
 
 ### Introducción
+<p align="justify">
+Hasta el momento se han desarrollado algunos servicios de aplicaciones implementando tecnologías y herramientas que son de gran utilidad para desarrollar sistemas robustos tolerantes a fallas, sin embargo no se han propuesto a prueba en ambientes hostiles en los que se generen fallos de manera caótica, es por esta razón por la cual se desarrolla la presente práctica, para poder comprobar el funcionamiento de estas en un entorno como el descrito.
+</p>
 
-
-### ¿Qué es Kubernetes?  
+### Desarrollo
 
 <p align="justify">
-Kubernetes es una plataforma portable y extensible de código abierto para administrar cargas de trabajo y servicios. Kubernetes facilita la automatización y la configuración declarativa. 
-</p>
-<p align="justify"> 
-Kubernetes ofrece un entorno de administración centrado en contenedores. Orquesta la infraestructura de cómputo, redes y almacenamiento para que las cargas de trabajo de los usuarios no tengan que hacerlo. Esto ofrece la simplicidad de las Plataformas como Servicio (PaaS) con la flexibilidad de la Infraestructura como Servicio (IaaS) y permite la portabilidad entre proveedores de infraestructura.
+  Lo primero que se realizo fue la clonación del repositorio de cheeky monkey, seguido de la instalación de python en la version 3.8.9. Una vez instalado python y copiado el repositorio se procedió a instalar los requerimientos.
 </p>
 
-
-### ¿Qué es Ingress?  
+![Instalación de requerimientos](/Imagenes/Screenshot_106.png)
 
 <p align="justify">
-Es un objeto de Kubernetes que gestiona el acceso externo a los servicios del clúster de Kubernetes. Expone rutas HTTP y HTTPS desde fuera del clúster de Kubernetes a los servicios del clúster de Kubernetes.
+  Posteriormente se ejecutó el comando *kubectl get ns* para obtener los pods que serán ignorados por el juego para no destruirlos.
 </p>
+
+![Filtro de pods](/Imagenes/Screenshot_107.png)
 
 <p align="justify">
-Para utilizar Ingress, debes tener el Controlador Ingress en el clúster Kubernetes. No viene como parte del clúster de Kubernetes como otros controladores del clúster, no se inicia automáticamente en el clúster. Podemos desplegar cualquier número de controladores de ingreso en el clúster de Kubernetes.
+  Una vez que se identifican cuales serán excluidos se ejecuta el juego detectando en este caso 20 pods.
 </p>
 
-
-### ¿Qué es un LoadBalancer?
+![Ejecución del juego](/Imagenes/Screenshot_108.png)
 
 <p align="justify">
-Distribuye automáticamente el tráfico entrante entre varios destinos, por ejemplo, instancias EC2, contenedores y direcciones IP en una o varias zonas de disponibilidad. Monitorea el estado de los destinos registrados y enruta el tráfico solamente a destinos en buen estado. Load Balancing escala el balanceador de carga a medida que el tráfico entrante va cambiando con el tiempo. Puede escalarse automáticamente para adaptarse a la mayoría de las cargas de trabajo.
+  Cuando se comienzan a destruir cajas en el juego se muestra en la esquina superior izquierda el pod que ha sido destruido.
 </p>
 
+![Demostración](/Imagenes/Screenshot_110.png)
 
-## Bibliografía
+<p align="justify">
+  Se puede verificar el estado de los pods para observar el caos generado con el juego, asi como la consola del propio juego.
+</p>
 
-- _¿Qué es Kubernetes?_ (2022, 17 julio). Kubernetes. Recuperado el 24 de Abril de 2023, de https://kubernetes.io/es/docs/concepts/overview/what-is-kubernetes/
-- Howtoforge, Howtoforge, & Howtoforge. (2021, 2 junio). _Qué es el Controlador Ingress y cómo desplegar el Controlador Ingress de Nginx en el Cluster Kubernetes en AWS usando Helm_. HowtoForge. Recuperado el 24 de Abril de 2023, de https://howtoforge.es/que-es-el-controlador-ingress-y-como-desplegar-el-controlador-ingress-de-nginx-en-el-cluster-kubernetes-en-aws-usando-helm/
-- _¿Qué es un Application Load Balancer? - Elastic Load Balancing_. (s. f.). Recuperado el 24 de Abril de 2023, de https://docs.aws.amazon.com/es_es/elasticloadbalancing/latest/application/introduction.html
+![Verificación](/Imagenes/Screenshot_111.png)
+
+![Verificación](/Imagenes/Screenshot_112.png)
+
+
+## Conclusión
+
+<p align="justify">
+  Gracias a esta actividad se pudieron comprobar algunas cosas hechas en actividades anteriores, pues al poder someter a los pods a un ambiente hostil en el que se ocasionan fallas caóticamente se ponen a pruebas las tecnologías implementadas con anterioridad para crear tolerancia a fallas. Se aprecio el buen funcionamiento de dichas tecnologías para crear resiliencia y mantener los servicios de las aplicaciones funcionando correctamente.
+</p>
